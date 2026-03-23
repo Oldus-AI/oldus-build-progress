@@ -341,7 +341,7 @@ const phases = [
     id: "creds",
     title: "Credentials & Integrations",
     status: "complete",
-    goldenSnapshot: "13 sandbox keys confirmed ✅",
+    goldenSnapshot: "4 essential sandbox keys confirmed ✅",
     items: [
       {
         id: "creds.0",
@@ -757,6 +757,55 @@ const phases = [
       },
     ],
   },
+  {
+    id: "p4",
+    title: "Phase 4 — Infrastructure Maturity & Context Optimisation (Days 37–40, 20–23 Mar 2026)",
+    status: "in-progress",
+    items: [
+      { id: "p4-1", text: "Beamer API keys added (BEAMER_API_KEY + PEECHO_BEAMER_API_KEY)", status: "done" },
+      { id: "p4-2", text: "Command Hub URL routing permanently fixed (Flask static_url_path, absolute fetch paths, symlink)", status: "done" },
+      { id: "p4-3", text: "Credential verification method documented — application-level injection, not Docker env", status: "done" },
+      { id: "p4-4", text: "Secrets Manager Panel spec v2 produced (25+ keys, 6 categories)", status: "done" },
+      { id: "p4-5", text: "Two-key Anthropic architecture documented (cloud dashboard key vs Claude Code key)", status: "done" },
+      { id: "p4-6", text: "16GB disk recovered (77% → 52%) — ML deps, Docker cache, stale dirs", status: "done" },
+      { id: "p4-7", text: "Proactive disk hygiene stack deployed (hourly disk alert, reclaim script, syslog/journald caps, weekly cleanup)", status: "done" },
+      { id: "p4-8", text: "Memory architecture v3 — index-based (people/projects/decisions/daily subdirs)", status: "done" },
+      { id: "p4-9", text: "MEMORY.md slimmed to 2.8KB pointer-only index", status: "done" },
+      { id: "p4-10", text: "ENGINEERING.md split — 3K root + 24K docs/ENGINEERING-REFERENCE.md (on-demand load)", status: "done" },
+      { id: "p4-11", text: "Session rotateBytes 10MB → 512KB, maxEntries → 200", status: "done" },
+      { id: "p4-12", text: "session-size-guard.sh path bug fixed (wrong sessions path since creation)", status: "done" },
+      { id: "p4-13", text: "Worker .claude bind mount fix — stops settings.json errors and model fallbacks on spawn", status: "done" },
+      { id: "p4-14", text: "Slack groupPolicy allowlist → open (restored #oldus-marketing channel)", status: "done" },
+      { id: "p4-15", text: "Discord disabled in plugins (stops reconnection cycles)", status: "done" },
+      { id: "p4-16", text: "oldus-handoff command deployed (/usr/local/bin/oldus-handoff)", status: "done" },
+      { id: "p4-17", text: "enforce-default-model.sh deployed — Sonnet as gravity after every session rotation", status: "done" },
+      { id: "p4-18", text: "Ops bridge session sweep — clears sticky per-session model overrides on model switch", status: "done" },
+      { id: "p4-19", text: "Per-session model override prohibition added to RULES.md", status: "done" },
+      { id: "p4-20", text: "Additional 5.5GB disk reclaimed (workspace snapshots, build artifacts, stale sessions) — 56% → 47%", status: "done" },
+      { id: "p4-21", text: "Worker handoff system deployed (/workspace/handoffs/, rule 7 in RULES.md, AGENTS.md templates)", status: "done" },
+      { id: "p4-22", text: "Command Hub Secrets Panel built and deployed", status: "done" },
+      { id: "p4-23", text: "Credential audit — sandbox keys reduced from 28 → 4 (GITHUB_TOKEN, ANTHROPIC_API_KEY, OPENAI_API_KEY, AZURE_STORAGE_CONNECTION_STRING)", status: "done" },
+      { id: "p4-24", text: "Session structure documented — individual .jsonl files per session + sessions.json index", status: "done" },
+      { id: "p4-25", text: "Sons Google Drive OAuth deployed — GCP project 309051162420, 5 Son subfolder IDs confirmed", status: "done" },
+      { id: "p4-26", text: "contextTokens 80K → 30K, reserveTokensFloor → 15K", status: "done" },
+      { id: "p4-27", text: "System prompt 46K → 14K tokens — 16 files relocated to docs/reference/ (70% baseline cost reduction)", status: "done" },
+      { id: "p4-28", text: "Context Window Discipline rule added to RULES.md", status: "done" },
+      { id: "p4-29", text: "Session size watchdog deployed (30-min cron, 512KB threshold, Telegram alert)", status: "done" },
+      { id: "p4-30", text: "Host-side session rotation (4x daily: 00:00/08:00/12:00/20:00 UTC) — replaces circular OpenClaw crons", status: "done" },
+      { id: "p4-31", text: "QMD installed and configured (bun, /usr/local/bin/qmd, openclaw.json memory backend)", status: "done" },
+      { id: "p4-32", text: "memoryFlush enabled (softThresholdTokens: 4000)", status: "done" },
+      { id: "p4-33", text: "memory/warm/ and cold/ added to scope-workspace-perms.sh writable paths", status: "done" },
+      { id: "p4-34", text: "ACTIVE-STATE.md symlinked to workspace root", status: "done" },
+      { id: "p4-35", text: "CS Son deployment (scoped, sent to Kate, awaiting feedback)", status: "waiting" },
+      { id: "p4-36", text: "Finance Son deployment (spec produced, Marlini is primary user)", status: "waiting" },
+      { id: "p4-37", text: "Marketing Son re-enablement (disabled since Day 17, permission script fix needed)", status: "waiting" },
+      { id: "p4-38", text: "NetSuite integration — auth works, role 25 has zero access (Tom Gallard)", status: "waiting" },
+      { id: "p4-39", text: "HeyGen avatar integration", status: "not-started" },
+      { id: "p4-40", text: "Voice pipeline — ElevenLabs prototype built, mic/CORS testing needed", status: "not-started" },
+      { id: "p4-41", text: "Autonomous PR pipeline (designed Day 25, needs repo ruleset creation)", status: "not-started" },
+      { id: "p4-42", text: "Credential rotation (multiple keys flagged)", status: "not-started" },
+    ],
+  },
 ];
 
 const securityItems = [
@@ -775,7 +824,7 @@ const securityItems = [
   { text: "GitHub PAT in .env + sandbox interpolation", done: true },
   { text: "Security audit — 0 critical, 0 warn", done: true },
   { text: "Denylist policy locked (infra keys only, ANTHROPIC_API_KEY exception for Claude Code)", done: true },
-  { text: "13 app-level keys injected via sandbox.docker.env", done: true },
+  { text: "4 essential sandbox keys injected via agents.defaults.sandbox.docker.env (GITHUB_TOKEN, ANTHROPIC_API_KEY, OPENAI_API_KEY, AZURE_STORAGE_CONNECTION_STRING)", done: true },
   { text: "Agentbus ACL-based inter-agent isolation", done: true },
   { text: "Router-stamped sender identity (anti-spoofing)", done: true },
   { text: "Sonos bridge — whitelisted commands + speaker IPs only", done: true },
@@ -803,6 +852,10 @@ const operationalRules = [
   "Claude Code: always work on branches (oldus/<n>), never main. Always append review request to prompts.",
   "Son deployment: each Son needs own token pair, own systemd service, own gateway port. Never share tokens with Oldus.",
   "HTTP endpoint config for Sons lives at gateway.http.endpoints.chatCompletions, not at root level.",
+  "Per-session model overrides prohibited — all model changes via ops bridge endpoint only",
+  "Sandbox credentials: agents.defaults.sandbox.docker.env only — root-level sandbox key causes gateway crash-loops",
+  "Context Window Discipline: MEMORY.md is an index only. Never dump full context into auto-load files.",
+  "session-size-guard.sh scans /home/oldus/.openclaw/agents/main/sessions — NOT .openclaw/sessions",
 ];
 
 const repoStatus = [
@@ -1044,7 +1097,7 @@ export default function BuildPlanDashboard() {
           <span style={{ fontSize: "20px" }}>🦞</span>
         </div>
         <p style={{ fontSize: "13px", color: "#6B7280", margin: "4px 0 16px 0" }}>
-          OpenClaw v2026.2.26 · Claude Opus 4.5 · Hetzner ARM · Updated 2026-03-03 · Day 20
+          OpenClaw v2026.2.26 · Claude Sonnet 4 · Hetzner ARM · Updated 2026-03-23 · Day 40
         </p>
         <div
           style={{
