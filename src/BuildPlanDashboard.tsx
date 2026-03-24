@@ -172,9 +172,9 @@ const phases = [
   },
   {
     id: "creds",
-    title: "Credentials & Integrations (28 total)",
+    title: "Credentials & Integrations (35 total)",
     status: "complete",
-    goldenSnapshot: "27 integrations live ✅",
+    goldenSnapshot: "35 integrations live ✅",
     items: [
       {
         id: "creds.0",
@@ -981,6 +981,11 @@ const milestones = [
   { day: 34, date: "2026-03-17", label: "Day 34", event: "⚠️ Session bloat crisis: 21 guard warnings in a single day. Root cause: guard was restarting gateway but never deleting bloated session file. Guard fixed. contextTokens/reserveTokensFloor reduced 80K/40K → 30K/15K. Memory restructured: index-only MEMORY.md, subfolders for people/projects/decisions/daily. Auto-load: 47.5KB → 26KB. Disk: 77% → 54%." },
   { day: 35, date: "2026-03-18", label: "Day 35", event: "⚠️ Session rotation speed diagnosed — 19 min from worker report to 512KB rotation. Three acute fixes: guard now deletes files, 30K context window deployed, zombie session archived. Worker output convention designed (pointers-not-content) — deferred pending observation." },
   { day: 36, date: "2026-03-19", label: "Day 36", event: "⚙️ Default model → claude-sonnet-4-6. Ops bridge model switch now sweeps sessions.json (prevents split-brain). Readymades git worktrees (configurator, preview-3d, shopify-integration) added to AgentDock. Paperclip gateway adapter attempted — crashed server after 33s, reverted to claude_local. Azure Blob Storage credentials live for Readymades/Canvas Republic/CardStar image uploads." },
+  { day: 37, date: "2026-03-20", label: "Day 37", event: "🚀 CardStar CYO flow shipped (shape picker, background step, editor handoff via URL params). Command Hub secrets panel spec received. Worker handoff system implemented. Google Ads API Basic Access approved (15k ops/day). Beamer + Peecho API keys added." },
+  { day: 38, date: "2026-03-21", label: "Day 38", event: "⚙️ Command Hub secrets panel built from scratch by Prime (sandbox isolation lesson). Flask server replacing static http.server — CRUD secrets API, denylist enforcement, audit logging, dark-themed frontend. sessions_history visibility fix deferred." },
+  { day: 39, date: "2026-03-22", label: "Day 39", event: "🐛 CardStar CYO bug sweep: 7 issues identified across shape picker, background step, and editor handoff — wrong shapes, off-brand UI, broken shape→editor pass-through, double camera icon." },
+  { day: 40, date: "2026-03-23", label: "Day 40", event: "⚙️ OpenClaw upgraded to v2026.3.23. Fixed: fast-finishing worker false timeout, systemd lock crash-loops, timezone handling for rotation crons, thinking block ordering, stale plugin IDs now warnings not fatal." },
+  { day: 41, date: "2026-03-24", label: "Day 41", event: "⚙️ Session rotation incident: 512KB guard triggered mid-conversation causing lost message. Tracker updated to reflect true state (Days 37-41, integrations, spend)." },
 ];
 
 const automationCrons = [
@@ -1053,6 +1058,14 @@ const integrations = [
   { name: "Ops Bridge (172.17.0.1:8100)", category: "Infra", status: "live" },
   { name: "Budget alerter", category: "Infra", status: "live" },
   { name: "Agentbus SQLite", category: "Infra", status: "live" },
+  { name: "Discord", category: "Comms", status: "live" },
+  { name: "Google Ads API", category: "Marketing", status: "live" },
+  { name: "Beamer (Prodigi)", category: "Marketing", status: "live" },
+  { name: "Peecho", category: "Marketing", status: "live" },
+  { name: "HeyGen", category: "AI", status: "live" },
+  { name: "LiveAvatar", category: "AI", status: "live" },
+  { name: "Ortto", category: "Marketing", status: "live" },
+  { name: "SEMrush", category: "Analytics", status: "live" },
 ];
 
 const securityItems = [
@@ -1071,7 +1084,7 @@ const securityItems = [
   { text: "GitHub PAT in .env + sandbox interpolation", done: true },
   { text: "Security audit — 0 critical, 0 warn", done: true },
   { text: "Denylist policy locked (infra keys only, ANTHROPIC_API_KEY exception for Claude Code)", done: true },
-  { text: "27 app-level keys injected via sandbox.docker.env", done: true },
+  { text: "35 app-level keys injected via sandbox.docker.env", done: true },
   { text: "Agentbus ACL-based inter-agent isolation", done: true },
   { text: "Router-stamped sender identity (anti-spoofing)", done: true },
   { text: "Sonos bridge — whitelisted commands + speaker IPs only", done: true },
@@ -1409,11 +1422,11 @@ export default function BuildPlanDashboard() {
               fontWeight: 700,
             }}
           >
-            Day 36
+            Day 41
           </span>
         </div>
         <p style={{ fontSize: "13px", color: "#6B7280", margin: "4px 0 16px 0" }}>
-          OpenClaw v2026.3.13 · Claude Sonnet 4.6 · Hetzner ARM Helsinki · Updated 2026-03-19 · Born 2026-02-11
+          OpenClaw v2026.3.23 · Claude Sonnet 4.6 · Hetzner ARM Helsinki · Updated 2026-03-24 · Born 2026-02-11
         </p>
 
         {/* Stats bar */}
@@ -1426,9 +1439,9 @@ export default function BuildPlanDashboard() {
           }}
         >
           {[
-            { label: "Total Spend", value: "~$2,417", sub: "Day 0-27 (£1,850 ex VAT)", color: "#7C3AED" },
+            { label: "Total Spend", value: "~$3,200", sub: "Day 0–41 (est.)", color: "#7C3AED" },
             { label: "Waste Eliminated", value: "~50%", sub: "vs baseline", color: "#059669" },
-            { label: "Integrations", value: "28", sub: "all live", color: "#0891B2" },
+            { label: "Integrations", value: "35", sub: "all live", color: "#0891B2" },
             { label: "CardStar Templates", value: "62", sub: "15 sports", color: "#D97706" },
           ].map((stat) => (
             <div
@@ -1517,10 +1530,10 @@ export default function BuildPlanDashboard() {
         >
           <div>
             <div style={{ fontWeight: 700, fontSize: "15px", color: "#111827" }}>
-              🗓️ Key Milestones — Day 0 → Day 36
+              🗓️ Key Milestones — Day 0 → Day 41
             </div>
             <div style={{ fontSize: "12px", color: "#6B7280", marginTop: "2px" }}>
-              {milestones.length} events · 36 days · Born 2026-02-11
+              {milestones.length} events · 41 days · Born 2026-02-11
             </div>
           </div>
           <span style={{ fontSize: "18px" }}>{showMilestones ? "▾" : "▸"}</span>
@@ -1999,7 +2012,7 @@ export default function BuildPlanDashboard() {
         }}
       >
         <div style={{ marginBottom: "4px" }}>
-          Oldus · Born 2026-02-11 · Hetzner ARM Helsinki · Day 36 of ∞ 🦞
+          Oldus · Born 2026-02-11 · Hetzner ARM Helsinki · Day 41 of ∞ 🦞
         </div>
         <div>
           Conscious omissions: watch mode, Docker Compose, separate dev/prod images, Kubernetes/Vault
