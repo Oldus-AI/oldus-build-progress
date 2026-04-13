@@ -654,7 +654,7 @@ const phases = [
   {
     id: "cardstar",
     title: "CardStar V2 — Personalised Sports Cards",
-    status: "complete",
+    status: "in-progress",
     goldenSnapshot: "GitHub: Oldus-AI/cardstar-v2 · Live: cardstar-v2.vercel.app ✅",
     items: [
       {
@@ -734,7 +734,7 @@ const phases = [
         title: "Live on Vercel (cardstar-v2.vercel.app)",
         status: "done",
         description:
-          "First deployed Day 19 (March 2). Day 27: 6 PRs merged, full feature set live. Auto-deploy on push to main via Foolsold Vercel account.",
+          "First deployed Day 19 (March 2). Day 27: 6 PRs merged, full feature set live. Auto-deploy on push to main via Foolsold Vercel account. Full production pipeline deployed Day 44: webhook server (port 3200), print service (port 8200), Shopify orders/paid webhook live.",
         completedDate: "2026-03-10",
       },
       {
@@ -766,16 +766,48 @@ const phases = [
       {
         id: "cs.12",
         title: "UX fixes — checkout loop + card halos",
-        status: "in-progress",
+        status: "done",
         description:
-          "PR #27 open (oldus/ux-fixes-march11). Fixed: checkout loop in BulkBuilder (setTimeout removed → navigate('/cart')), Cart page dark theme rewrite, card thumbnails object-contain + dark bg to eliminate white halo fringing on dark pages.",
-        completedDate: "",
+          "PR #27 open (oldus/ux-fixes-march11). Fixed: checkout loop in BulkBuilder (setTimeout removed → navigate('/cart')), Cart page dark theme rewrite, card thumbnails object-contain + dark bg to eliminate white halo fringing on dark pages. Cart debounce (isSubmitting guard) and header nav wrap shipped Day 44.",
+        completedDate: "2026-03-27",
         subItems: [
           { text: "Checkout loop fixed (BulkBuilder setTimeout → navigate)", done: true },
           { text: "Cart.tsx full dark theme rewrite", done: true },
           { text: "Card image halos (object-contain + #071f24 bg)", done: true },
-          { text: "PR #27 merged to main", done: false },
+          { text: "Cart debounce (isSubmitting guard)", done: true },
+          { text: "Header nav wrap", done: true },
         ],
+      },
+      {
+        id: "cs.13",
+        title: "Big Head Print — custom cutout feature",
+        status: "in-progress",
+        description:
+          "Upload photo → bg removal → contour cutout → size picker → PDF proof → cart. Server-side OpenCV contour-cut, Cairo PDF with CutContour path. Branch: feature/big-head. PR #78 open for variant ID wiring.",
+        subItems: [
+          { text: "Upload + bg removal + contour-cut (OpenCV)", done: true },
+          { text: "Size picker (A5-A0, 6 sizes)", done: true },
+          { text: "Cairo PDF with CutContour path", done: true },
+          { text: "Shopify product created (6 variants, A5-A0, £19.95-£89.95)", done: true },
+          { text: "Vercel env vars set (VITE_BIGHEAD_VARIANT_ID_*)", done: false },
+          { text: "PR #78 merged to main", done: false },
+        ],
+      },
+      {
+        id: "cs.14",
+        title: "SEO — /cards/ page upgrades",
+        status: "done",
+        description:
+          "82 /cards/ pages upgraded from 1-line stubs to full SEO content (meta, OG, JSON-LD, structured copy). Sitemap expanded 45→127 URLs.",
+        completedDate: "2026-03-25",
+      },
+      {
+        id: "cs.15",
+        title: "Nav/footer sync across all 534 flat HTML pages",
+        status: "done",
+        description:
+          "New update-nav-footer.cjs utility script syncs React nav/footer components across all flat HTML pages. Commit 0f63a68.",
+        completedDate: "2026-03-31",
       },
     ],
   },
@@ -818,12 +850,12 @@ const phases = [
         title: "Phase 2 — In progress",
         status: "in-progress",
         description:
-          "Zustand state management, layout resolver, slot assignment engine. Collaboration with Minerva (Mike's agent). Editor stability on Vercel (ThemeProvider crash resolved).",
+          "Zustand state management, layout resolver, slot assignment engine. Collaboration with Minerva (Mike's agent). Editor stability on Vercel (ThemeProvider crash resolved). Zustand + layout resolver in progress as of Day 62.",
         subItems: [
-          { text: "Zustand store architecture", done: false },
-          { text: "Layout resolver (slot → image matching)", done: false },
-          { text: "Slot assignment engine", done: false },
           { text: "Vercel deployment stability", done: true },
+          { text: "Zustand store architecture", done: false },
+          { text: "Layout resolver (slot → image matching) — in progress Day 62", done: false },
+          { text: "Slot assignment engine", done: false },
         ],
       },
     ],
@@ -869,10 +901,10 @@ const phases = [
         title: "Tests",
         status: "in-progress",
         description:
-          "6 tests total. 2/6 failing as of Day 27. Not yet live.",
+          "6 tests total. 2/6 failing as of Day 27. Still 2/6 failing as of Day 62 — 5+ weeks unresolved. Not yet live.",
         subItems: [
           { text: "4/6 tests passing", done: true },
-          { text: "2/6 tests failing — fix in progress", done: false },
+          { text: "2/6 tests failing — unresolved 5+ weeks (Day 62)", done: false },
         ],
       },
     ],
@@ -912,7 +944,7 @@ const phases = [
         title: "Build progress tracker (this dashboard)",
         status: "done",
         description:
-          "React dashboard tracking all build progress. GitHub repo: Oldus-AI/oldus-build-progress. GitHub Actions CI/CD for auto-deploy to Pages on push.",
+          "Updated Day 62 (107/122, 88%). GitHub repo: Oldus-AI/oldus-build-progress. GitHub Actions CI/CD for auto-deploy to Pages on push.",
         completedDate: "2026-02-22",
       },
       {
@@ -986,6 +1018,13 @@ const milestones = [
   { day: 39, date: "2026-03-22", label: "Day 39", event: "🐛 CardStar CYO bug sweep: 7 issues identified across shape picker, background step, and editor handoff — wrong shapes, off-brand UI, broken shape→editor pass-through, double camera icon." },
   { day: 40, date: "2026-03-23", label: "Day 40", event: "⚙️ OpenClaw upgraded to v2026.3.23. Fixed: fast-finishing worker false timeout, systemd lock crash-loops, timezone handling for rotation crons, thinking block ordering, stale plugin IDs now warnings not fatal." },
   { day: 41, date: "2026-03-24", label: "Day 41", event: "⚙️ Session rotation incident: 512KB guard triggered mid-conversation causing lost message. Tracker updated to reflect true state (Days 37-41, integrations, spend)." },
+  { day: 42, date: "2026-03-25", label: "Day 42", event: "🚀 CardStar SEO Phase 1 complete. 82 pages in /cards/ upgraded from 1-line stubs to full SEO content (meta, OG, JSON-LD, structured copy). Sitemap expanded 45→127 URLs. Sonnet-worker via haiku triage." },
+  { day: 43, date: "2026-03-26", label: "Day 43", event: "🚀 Big Head feature shipped on feature/big-head branch: full upload→bg-removal→cutout→size-picker→PDF-proof→cart flow. Server-side contour-cut via OpenCV. Cairo PDF with CutContour path. Azure Blob configured. Awaiting: Shopify variant IDs, SAS token, Vercel env vars." },
+  { day: 44, date: "2026-03-27", label: "Day 44", event: "🚀 CardStar V2 full production pipeline live: webhook server port 3200 (Tailscale Funnel), print service port 8200, Docker containers healthy. Shopify app replaced (new client ID f40592ed260d2a5491ad7ac83af77b20), webhook ID 2295196647755 → orders/paid. Token refresh cron 03:00 UTC daily. docker-compose.yml synced VPS→repo. UX fixes: cart debounce (isSubmitting guard), header nav wrap." },
+  { day: 45, date: "2026-03-28", label: "Day 45-46", event: "⚙️ Memory maintenance. Operational failures doc created (8 failure patterns). Haiku triage system refined. Worker handoff format standardised." },
+  { day: 47, date: "2026-03-30", label: "Day 47-53", event: "⚙️ Housekeeping week. Branch cleanup: deleted stale oldus/fix-print-spec-compliance (651 files/-95K lines) and oldus/fix-login-logo (merged). CardStar nav/footer synced across all 534 flat HTML pages via new update-nav-footer.cjs utility (commit 0f63a68). Bug fixes deployed (commit 6d664bcf): chunk load error handling, CYO blank step render, navigation state persistence, Big Head cart wiring." },
+  { day: 54, date: "2026-04-06", label: "Day 54-61", event: "⚙️ Ongoing CardStar work. CYO player name rendering bug diagnosed (clip path hypothesis). CardStar V2 PR #59 open for UX polish. Big Head product created in Shopify (product ID 15660170903883) with correct 6 sizes matching main product (A5-A0: £19.95-£89.95). PR #78 open wiring Big Head variant IDs + A5 size." },
+  { day: 62, date: "2026-04-13", label: "Day 62", event: "📊 Build progress tracker updated. 107/122 items complete (88%). Big Head Shopify product recreated to match main product pricing/sizes exactly." },
 ];
 
 const automationCrons = [
@@ -1012,7 +1051,7 @@ const agents = [
   { id: "ux-son", model: "Claude Sonnet 4.5", status: "registered", role: "UX domain specialist. Registered Day 20. Awaiting first task." },
   { id: "cs-son", model: "TBD", status: "scoped", role: "Customer support specialist for Kate's team. Scoped, not deployed." },
   { id: "finance-son", model: "TBD", status: "scoped", role: "Finance automation for Marlini/Tom. 10-section spec written. Not deployed." },
-  { id: "marketing-son", model: "Sonnet 4.5", status: "disabled", role: "Marketing Performance. DISABLED Day 17 — chmod -R loop generated 30GB+ syslog." },
+  { id: "marketing-performance-son", model: "Sonnet 4.5", status: "disabled", role: "Marketing Performance. DISABLED Day 17 — chmod -R loop generated 30GB+ syslog. Pending re-enable with fixed permission script." },
 ];
 
 const governanceDocs = [
@@ -1422,11 +1461,11 @@ export default function BuildPlanDashboard() {
               fontWeight: 700,
             }}
           >
-            Day 41
+            Day 62
           </span>
         </div>
         <p style={{ fontSize: "13px", color: "#6B7280", margin: "4px 0 16px 0" }}>
-          OpenClaw v2026.3.23 · Claude Sonnet 4.6 · Hetzner ARM Helsinki · Updated 2026-03-24 · Born 2026-02-11
+          OpenClaw v2026.3.23 · Claude Sonnet 4.6 · Hetzner ARM Helsinki · Updated 2026-04-13 · Born 2026-02-11
         </p>
 
         {/* Stats bar */}
@@ -1530,10 +1569,10 @@ export default function BuildPlanDashboard() {
         >
           <div>
             <div style={{ fontWeight: 700, fontSize: "15px", color: "#111827" }}>
-              🗓️ Key Milestones — Day 0 → Day 41
+              🗓️ Key Milestones — Day 0 → Day 62
             </div>
             <div style={{ fontSize: "12px", color: "#6B7280", marginTop: "2px" }}>
-              {milestones.length} events · 41 days · Born 2026-02-11
+              {milestones.length} events · 62 days · Born 2026-02-11
             </div>
           </div>
           <span style={{ fontSize: "18px" }}>{showMilestones ? "▾" : "▸"}</span>
@@ -1670,7 +1709,7 @@ export default function BuildPlanDashboard() {
               🤖 Agent Fleet ({agents.length} agents)
             </div>
             <div style={{ fontSize: "12px", color: "#6B7280", marginTop: "2px" }}>
-              3 active · 1 registered · 2 scoped · 1 disabled
+              3 active · 1 registered · 2 scoped · 1 disabled (fleet: {agents.length})
             </div>
           </div>
           <span style={{ fontSize: "18px" }}>{showAgents ? "▾" : "▸"}</span>
@@ -2012,7 +2051,7 @@ export default function BuildPlanDashboard() {
         }}
       >
         <div style={{ marginBottom: "4px" }}>
-          Oldus · Born 2026-02-11 · Hetzner ARM Helsinki · Day 41 of ∞ 🦞
+          Oldus · Born 2026-02-11 · Hetzner ARM Helsinki · Day 62 of ∞ 🦞
         </div>
         <div>
           Conscious omissions: watch mode, Docker Compose, separate dev/prod images, Kubernetes/Vault
