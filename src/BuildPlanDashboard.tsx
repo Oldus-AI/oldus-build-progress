@@ -172,9 +172,9 @@ const phases = [
   },
   {
     id: "creds",
-    title: "Credentials & Integrations (35 total)",
+    title: "Credentials & Integrations (27 total)",
     status: "complete",
-    goldenSnapshot: "35 integrations live ✅",
+    goldenSnapshot: "27 integrations live ✅",
     items: [
       {
         id: "creds.0",
@@ -348,7 +348,7 @@ const phases = [
         title: "Marketing Performance Son — DISABLED",
         status: "done",
         description:
-          "First Son deployed Day 11, disabled Day 17. Root cause: chmod -R permission script running in tight loop generating 30GB+ syslog spam. Cleaned up. Lesson: monitor what Sons do to the host, not just what they report.",
+          "Disabled Day 17 (chmod -R loop, 30GB syslog). Has been dark for 88 days as of Day 105. No restoration planned. A new marketing-son is scoped from scratch.",
         completedDate: "2026-02-28",
       },
       {
@@ -356,7 +356,7 @@ const phases = [
         title: "UX Son (ux-son) — registered",
         status: "done",
         description:
-          "Agent ID: ux-son. Model: Sonnet 4.5. Registered Day 20. Awaiting first meaningful task dispatch.",
+          "Registered Day 20. Still dormant as of Day 105 — no tasks dispatched in 85 days.",
         completedDate: "2026-03-03",
       },
       {
@@ -364,20 +364,14 @@ const phases = [
         title: "CS Son — scoped for Kate",
         status: "in-progress",
         description:
-          "Scoped for customer support (Kate's team). Full scoping doc written (Day 28). Live demo being built for all-hands — merchant churn risk monitor + agent quality scorecard via Zendesk API. Deploy after demo validated.",
-        subItems: [
-          { text: "CS Son scope document (Kate)", done: true },
-          { text: "Zendesk API validated (2,890 tickets, org_id fields confirmed)", done: true },
-          { text: "All-hands demo: merchant churn risk monitor + agent quality scorecard", done: false },
-          { text: "Production deployment", done: false },
-        ],
+          "Full scoping document delivered to Kate (April 2026). Trust progression through 3 phases, query categorisation, escalation paths, success metrics. Awaiting Kate's commitment to specific data sources and pilot window.",
       },
       {
         id: "sons.11",
         title: "Finance Son — scoped for Marlini/Tom",
         status: "in-progress",
         description:
-          "Scoped for finance automation (Marlini/Tom). 10-section non-technical spec. Trust progression phases defined. Not yet deployed.",
+          "Full scoping document delivered to Marlini and Tom Gallard (April 2026). NetSuite M2M OAuth already authenticated — integration unblocked. Awaiting decision on sandbox-to-production gate.",
       },
       {
         id: "sons.12",
@@ -455,8 +449,15 @@ const phases = [
         title: "OpenClaw upgrades",
         status: "done",
         description:
-          "v2026.2.15 → v2026.2.22-2 (Day 12). v2026.2.22-2 → v2026.2.26 (Day 18). Key gains: 1M context beta, subagents spawn, per-channel model overrides, security hardening.",
+          "Three upgrades survived: 2026.2.26, 2026.3.8, 2026.3.23-2, 2026.4.15. Recovery playbook now reliable. Pattern: every upgrade is a config drift event — audit immediately after.",
         completedDate: "2026-03-01",
+        subItems: [
+          { text: "2026.2.26 — clean", done: true },
+          { text: "2026.3.8 — clean (compaction + session-reset fixes)", done: true },
+          { text: "2026.3.23-2 — broke system service, recovered (playbook used)", done: true },
+          { text: "2026.4.15 — silently disabled 2 OpenClaw crons, Opus 4.7 tier not wired in ops bridge", done: true },
+          { text: "Post-upgrade audit checklist created", done: true },
+        ],
       },
       {
         id: "p2.8",
@@ -469,7 +470,7 @@ const phases = [
       {
         id: "p2.9",
         title: "CI & Branch Protection",
-        status: "in-progress",
+        status: "done",
         description:
           "CI workflows live on all code repos. Branch protection ruleset created (quality-gate status check required).",
         subItems: [
@@ -539,7 +540,7 @@ const phases = [
         title: "Ops Bridge — self-service host control",
         status: "done",
         description:
-          "Running at 172.17.0.1:8100. Diagnostics, gateway restart, model switching, Son management. Systemd service, fixed sudo permissions, atomic config writes. Rule 27: always try ops bridge before asking James.",
+          "Running at 172.17.0.1:8100. Model switching, gateway restart, status, repair endpoints. Seven /pp/* printing-press endpoints: shopify, semrush, prodigi, snowflake, jira, jira-marketing, ortto. Credential architecture: Shopify/Semrush/Prodigi exclusively in /etc/oldus-ops-bridge.env. All 7 endpoints verified with live requests (May 2026).",
         completedDate: "2026-03-02",
       },
       {
@@ -547,7 +548,7 @@ const phases = [
         title: "Budget System",
         status: "done",
         description:
-          "SQLite ledger, session JSONL parser (reads real cost.total from agent session files), CLI tool (oldus-budget), 3 crons. Budget pools: Prime $75/day, Sons $50/day pool. 80%/100% alerting. Total spend to Date: ~$2,417 USD (£1,850 ex VAT).",
+          "SQLite ledger, session JSONL parser (reads real cost.total from agent session files), CLI tool (oldus-budget), 3 crons. Budget pools: Prime $75/day, Sons $50/day pool. 80%/100% alerting. Total spend to Date: ~$2,416.93.",
         completedDate: "2026-03-06",
       },
       {
@@ -561,9 +562,9 @@ const phases = [
       {
         id: "p3.6",
         title: "Voice Interface — prototype",
-        status: "done",
+        status: "stalled",
         description:
-          "Prototype built Day 24. React + ElevenLabs Conversational AI SDK, animated visualizer rings. Not yet deployed. HeyGen + Wispr Flow pipeline in progress.",
+          "Prototype built Day 24. React + ElevenLabs Conversational AI SDK, animated visualizer rings. Not deployed. HeyGen available. No active work since Day 24.",
       },
       {
         id: "p3.7",
@@ -609,9 +610,9 @@ const phases = [
       {
         id: "p3.11",
         title: "Token Economics",
-        status: "in-progress",
+        status: "stalled",
         description:
-          "Build spec written. Ledger deployed (SQLite). Total spend ~$2,417 USD (£1,850 ex VAT). ~50% was avoidable waste (Day 6 $700, 20 days wrong model routing ~$132/day, context bloat, ArtPlatform gibberish). Day 3 principle → Day 23 implementation = 20 days avoidable spend.",
+          "Budget system built and deployed (Day 23). Spend total ~$2,417 at Day 25 — figure not updated since. Budget pools configured (Prime $75/day, Sons $50/day). No active tracking since Day 40. ~50% of total spend to date was avoidable waste.",
         subItems: [
           { text: "Spend spec written", done: true },
           { text: "SQLite ledger deployed", done: true },
@@ -654,7 +655,7 @@ const phases = [
   {
     id: "cardstar",
     title: "CardStar V2 — Personalised Sports Cards",
-    status: "in-progress",
+    status: "complete",
     goldenSnapshot: "GitHub: Oldus-AI/cardstar-v2 · Live: cardstar-v2.vercel.app ✅",
     items: [
       {
@@ -734,7 +735,7 @@ const phases = [
         title: "Live on Vercel (cardstar-v2.vercel.app)",
         status: "done",
         description:
-          "First deployed Day 19 (March 2). Day 27: 6 PRs merged, full feature set live. Auto-deploy on push to main via Foolsold Vercel account. Full production pipeline deployed Day 44: webhook server (port 3200), print service (port 8200), Shopify orders/paid webhook live.",
+          "First deployed Day 19 (March 2). Day 27: 6 PRs merged, full feature set live. Auto-deploy on push to main via Foolsold Vercel account.",
         completedDate: "2026-03-10",
       },
       {
@@ -763,67 +764,21 @@ const phases = [
         description:
           "9 currencies wired in from V1. Tier 1 expansion: SEK, NOK, PLN. Geo-IP detection, currency selector in nav/footer.",
       },
-      {
-        id: "cs.12",
-        title: "UX fixes — checkout loop + card halos",
-        status: "done",
-        description:
-          "PR #27 open (oldus/ux-fixes-march11). Fixed: checkout loop in BulkBuilder (setTimeout removed → navigate('/cart')), Cart page dark theme rewrite, card thumbnails object-contain + dark bg to eliminate white halo fringing on dark pages. Cart debounce (isSubmitting guard) and header nav wrap shipped Day 44.",
-        completedDate: "2026-03-27",
-        subItems: [
-          { text: "Checkout loop fixed (BulkBuilder setTimeout → navigate)", done: true },
-          { text: "Cart.tsx full dark theme rewrite", done: true },
-          { text: "Card image halos (object-contain + #071f24 bg)", done: true },
-          { text: "Cart debounce (isSubmitting guard)", done: true },
-          { text: "Header nav wrap", done: true },
-        ],
-      },
-      {
-        id: "cs.13",
-        title: "Big Head Print — custom cutout feature",
-        status: "in-progress",
-        description:
-          "Upload photo → bg removal → contour cutout → size picker → PDF proof → cart. Server-side OpenCV contour-cut, Cairo PDF with CutContour path. Branch: feature/big-head. PR #78 open for variant ID wiring.",
-        subItems: [
-          { text: "Upload + bg removal + contour-cut (OpenCV)", done: true },
-          { text: "Size picker (A5-A0, 6 sizes)", done: true },
-          { text: "Cairo PDF with CutContour path", done: true },
-          { text: "Shopify product created (6 variants, A5-A0, £19.95-£89.95)", done: true },
-          { text: "Vercel env vars set (VITE_BIGHEAD_VARIANT_ID_*)", done: false },
-          { text: "PR #78 merged to main", done: false },
-        ],
-      },
-      {
-        id: "cs.14",
-        title: "SEO — /cards/ page upgrades",
-        status: "done",
-        description:
-          "82 /cards/ pages upgraded from 1-line stubs to full SEO content (meta, OG, JSON-LD, structured copy). Sitemap expanded 45→127 URLs.",
-        completedDate: "2026-03-25",
-      },
-      {
-        id: "cs.15",
-        title: "Nav/footer sync across all 534 flat HTML pages",
-        status: "done",
-        description:
-          "New update-nav-footer.cjs utility script syncs React nav/footer components across all flat HTML pages. Commit 0f63a68.",
-        completedDate: "2026-03-31",
-      },
     ],
   },
   {
     id: "artplatform",
     title: "ArtPlatform / Book Builder",
-    status: "blocked",
-    goldenSnapshot: "⚠️ Day 20 build was waste — 35K lines of gibberish that ignored Mike's source material. Being rebuilt properly.",
+    status: "in-progress",
+    goldenSnapshot: "GitHub: Oldus-AI/artplatform · PR #4 merged ✅",
     items: [
       {
         id: "ap.0",
-        title: "Phase 1 — Foundation (FAILED — waste)",
-        status: "blocked",
+        title: "Phase 1 — Foundation (merged PR #4)",
+        status: "done",
         description:
-          "Built overnight Day 20 WITHOUT reading Mike's existing source material. 35K lines of gibberish. Three-payload architecture, SpreadStrip/SpreadCanvas components, 63 layouts — all fundamentally wrong. Complete rebuild required using Mike's actual spec and code.",
-        completedDate: "",
+          "Built overnight Day 20. 63 layouts across 6 categories, Constraints Service, Layout Compiler, three-payload architecture (Template + Project → Resolved). SpreadStrip, SpreadCanvas, LayoutPicker components. ARCHITECTURE.md for Mike/Minerva onboarding. ~35K lines of code.",
+        completedDate: "2026-03-04",
         subItems: [
           { text: "layouts-v2.ts — 63 layouts, 6 categories", done: true },
           { text: "product-catalog.ts — 5 products, 24 SKUs", done: true },
@@ -839,23 +794,23 @@ const phases = [
       },
       {
         id: "ap.1",
-        title: "Phase 1 extended (Phases 27-32 — also waste)",
-        status: "blocked",
+        title: "Phase 1 extended (Phases 27-32 merged)",
+        status: "done",
         description:
-          "Day 21: checkout flow, Prodigi API integration, auto-layout, analytics, templates, validation, text editing built on top of the wrong foundation. All 35 phases need to be scrapped and rebuilt from Mike's actual spec.",
-        completedDate: "",
+          "Day 21: checkout flow, Prodigi API integration, auto-layout, analytics, templates, validation, text editing. ~35K total lines across 35 phases merged.",
+        completedDate: "2026-03-04",
       },
       {
         id: "ap.2",
         title: "Phase 2 — In progress",
         status: "in-progress",
         description:
-          "Zustand state management, layout resolver, slot assignment engine. Collaboration with Minerva (Mike's agent). Editor stability on Vercel (ThemeProvider crash resolved). Zustand + layout resolver in progress as of Day 62.",
+          "Zustand state management, layout resolver, slot assignment engine. Collaboration with Minerva (Mike's agent). Editor stability on Vercel (ThemeProvider crash resolved).",
         subItems: [
-          { text: "Vercel deployment stability", done: true },
           { text: "Zustand store architecture", done: false },
-          { text: "Layout resolver (slot → image matching) — in progress Day 62", done: false },
+          { text: "Layout resolver (slot → image matching)", done: false },
           { text: "Slot assignment engine", done: false },
+          { text: "Vercel deployment stability", done: true },
         ],
       },
     ],
@@ -887,7 +842,7 @@ const phases = [
         title: "Configurator UI, pricing engine, SKU generator",
         status: "in-progress",
         description:
-          "Product picker, pricing engine, preview renderer, SKU generator spec solid from Day 5. Build in progress.",
+          "Spec consolidated across 13 sections (v2.0) then superseded by Platform Spec v2 (12 May 2026). Build sequence now: shared @prodigi/framing package → Frame Asset Service v1.2 → Canvas Republic MVP → Readymades V2 configurator. Frontend build not yet started.",
         subItems: [
           { text: "Product picker UI", done: false },
           { text: "Pricing engine (78 mouldings × 348 products)", done: false },
@@ -899,12 +854,12 @@ const phases = [
       {
         id: "rf.3",
         title: "Tests",
-        status: "in-progress",
+        status: "stalled",
         description:
-          "6 tests total. 2/6 failing as of Day 27. Still 2/6 failing as of Day 62 — 5+ weeks unresolved. Not yet live.",
+          "6 tests total. Last state: 2/6 failing. No active work since Day 27.",
         subItems: [
           { text: "4/6 tests passing", done: true },
-          { text: "2/6 tests failing — unresolved 5+ weeks (Day 62)", done: false },
+          { text: "2/6 tests failing — fix in progress", done: false },
         ],
       },
     ],
@@ -934,9 +889,9 @@ const phases = [
       {
         id: "ops.2",
         title: "Cron jobs inventory",
-        status: "done",
+        status: "regression",
         description:
-          "10+ active crons covering health-check, retry-queue, memory-maintenance, morning-briefing, missive-queue, gateway watchdog, budget parser, session watchdog, session rotation, security audit, git auto-sync, syslog cap, capability audit.",
+          "10+ active crons built across Days 1-25. As of May 2026: all 8 OpenClaw crons disabled (2 waves — March 2026 and post-4.15 upgrade April 2026). Only host crontab jobs survive: gateway watchdog, session rotation (×6), backup, git-sync, Shopify token refresh, sales dashboard refresh, KPI sheet refresh. OpenClaw cron restoration is pending.",
         completedDate: "2026-03-07",
       },
       {
@@ -944,7 +899,7 @@ const phases = [
         title: "Build progress tracker (this dashboard)",
         status: "done",
         description:
-          "Updated Day 62 (107/122, 88%). GitHub repo: Oldus-AI/oldus-build-progress. GitHub Actions CI/CD for auto-deploy to Pages on push.",
+          "React dashboard tracking all build progress. GitHub repo: Oldus-AI/oldus-build-progress. GitHub Actions CI/CD for auto-deploy to Pages on push.",
         completedDate: "2026-02-22",
       },
       {
@@ -958,14 +913,15 @@ const phases = [
       {
         id: "ops.5",
         title: "Google Sheets/Docs API",
-        status: "in-progress",
+        status: "done",
         description:
-          "Scopes granted in OAuth token. Drive confirmed working. Sheets/Docs APIs pending GCP enablement.",
+          "Fully operational. Both APIs enabled in GCP. Sheets, Drive, and Docs all working. Two OAuth accounts: james@prodigi.com and oldus@prodigi.com with identical scopes.",
+        completedDate: "2026-03-20",
         subItems: [
           { text: "OAuth scopes for Drive, Sheets, Docs", done: true },
           { text: "Drive API working", done: true },
-          { text: "Sheets API enabled in GCP", done: false },
-          { text: "Docs API enabled in GCP", done: false },
+          { text: "Sheets API enabled in GCP", done: true },
+          { text: "Docs API enabled in GCP", done: true },
         ],
       },
       {
@@ -975,6 +931,169 @@ const phases = [
         description:
           "13-slide non-technical intro. Journey timeline slides (Days 1-25, honest story with wins, failures, costs). Built Day 25.",
         completedDate: "2026-03-08",
+      },
+    ],
+  },
+  {
+    id: "new-days26-105",
+    title: "New — Days 26-105 Additions",
+    status: "in-progress",
+    goldenSnapshot: "Day 105 — 27 May 2026",
+    items: [
+      {
+        id: "new.0",
+        title: "Engineer tool (host-native Claude Code)",
+        status: "done",
+        description: "Host-native execution layer. Invoked as: sudo -u oldus engineer <type> <branch> '<prompt>'. Runs claude --print --permission-mode auto on host as oldus, reads /home/oldus/.claude/ directly, bypasses OpenClaw gateway entirely. Logs to /var/log/engineer/. Used for all multi-file code tasks.",
+        completedDate: "2026-05-13",
+        subItems: [
+          { text: "Wrapper script at /usr/local/bin/engineer", done: true },
+          { text: "ENGINEERING.md brain in Oldus-AI/claude-brain (symlinked)", done: true },
+          { text: "PreToolUse hook", done: true },
+          { text: "SessionStart hook", done: true },
+          { text: "root-deploy.sh hook", done: true },
+          { text: "PostToolUse hook", done: false },
+          { text: "settings.json idempotent write (wiped on rotation)", done: false },
+        ],
+      },
+      {
+        id: "new.1",
+        title: "Printing-press credential architecture",
+        status: "done",
+        description: "Shopify, Semrush, Prodigi credentials moved out of sandbox into /etc/oldus-ops-bridge.env. Three new /pp/* endpoints. Sandbox env reduced to 6 keys. Tier 4 architecture: production-facing APIs with money/data risk never touch the sandbox.",
+        completedDate: "2026-05-11",
+      },
+      {
+        id: "new.2",
+        title: "QMD workspace search bridge",
+        status: "done",
+        description: "BM25 + hybrid vector search across 841 documents / 2,632 chunks. Port 8101. /search (keyword) and /query (hybrid, default). Replaces the capability amnesia problem for workspace content. qmd-bridge.service running as systemd.",
+        completedDate: "2026-03-29",
+      },
+      {
+        id: "new.3",
+        title: "Ops bridge /pp/* expansion",
+        status: "done",
+        description: "Seven endpoints live: /pp/shopify, /pp/semrush, /pp/prodigi, /pp/snowflake, /pp/jira, /pp/jira-marketing, /pp/ortto. All 7 verified with live requests May 2026. Google Ads endpoint broken (missing GOOGLE_ADS_LOGIN_CUSTOMER_ID).",
+        completedDate: "2026-05-23",
+        subItems: [
+          { text: "/pp/shopify", done: true },
+          { text: "/pp/semrush", done: true },
+          { text: "/pp/prodigi", done: true },
+          { text: "/pp/snowflake", done: true },
+          { text: "/pp/jira", done: true },
+          { text: "/pp/jira-marketing", done: true },
+          { text: "/pp/ortto", done: true },
+          { text: "/pp/google-ads (BROKEN — missing LOGIN_CUSTOMER_ID)", done: false },
+        ],
+      },
+      {
+        id: "new.4",
+        title: "Sticky model rotation",
+        status: "done",
+        description: "enforce-default-model.sh (Sonnet-as-gravity) retired. Replaced with announce-current-model.sh — reads actual model from config, announces via Telegram after each rotation, does NOT auto-revert. Model is now sticky across rotations.",
+        completedDate: "2026-05-16",
+      },
+      {
+        id: "new.5",
+        title: "Prodigi Marketing KPIs dashboard",
+        status: "done",
+        description: "Google Sheet ID 1VWTDN6aN-PSUlriO92YgRTNqt5611R412InbgCy724o. Weekly refresh cron Mondays 07:00 UTC. Sources: GA4 (13 properties), Snowflake MERCHANT_ATTRIBUTION, SEMrush. 11 charts in Prodigi colours. YoY views added.",
+        completedDate: "2026-05-21",
+      },
+      {
+        id: "new.6",
+        title: "Sales dashboard incremental refresh",
+        status: "done",
+        description: "Daily Snowflake pull at 07:00 UTC. Upserts yesterday's data into Data_Daily/Weekly/Monthly/YoY tabs. Old full-refresh script retired. Script: /workspace/scripts/refresh-sales-dashboard-daily.py",
+        completedDate: "2026-05-25",
+      },
+      {
+        id: "new.7",
+        title: "Autonomous PR pipeline",
+        status: "abandoned",
+        description: "GitHub Actions workflow created Day 26 with three-state logic (auto-merge on clean CI + Copilot review, label needs-fixes on critical comments, wait otherwise). Scoped to oldus/* branches. The Copilot ruleset on repos was never configured. No commits have ever flowed through it end-to-end. Has been idle since creation.",
+      },
+      {
+        id: "new.8",
+        title: "Paperclip integration",
+        status: "abandoned",
+        description: "Deployed and partially integrated Days 28-35. OpenClaw adapter crashed after ~33 seconds, forcing revert to claude_local mode. Multiple attempts to stabilise all failed. Parked permanently.",
+      },
+      {
+        id: "new.9",
+        title: "WaaS pitch deck v4",
+        status: "done",
+        description: "'A genius in every department' — managed AI workforce consultancy. Three-tier hierarchy (Graduate/Specialist/Senior). SJP-inspired distribution: recruiting displaced consultants who bring their own client networks. IFA vertical as early target. Deck complete since mid-March. No external pitches yet.",
+        completedDate: "2026-03-15",
+        subItems: [
+          { text: "Pitch deck v4 complete", done: true },
+          { text: "SJP distribution model defined", done: true },
+          { text: "IFA vertical scoped", done: true },
+          { text: "First external pitch", done: false },
+          { text: "Displaced-consultant recruitment started", done: false },
+          { text: "First pilot client", done: false },
+        ],
+      },
+      {
+        id: "new.10",
+        title: "Platform Spec v2 — shared POD infrastructure",
+        status: "done",
+        description: "Architectural blueprint for shared @prodigi/framing package, Frame Asset Service v1.2, MVP preview drop-in bundle. Build sequence: validate against 3 consumers (Canvas Republic, Readymades, CardStar V3) before committing to Readymades V2. Risk profile inverted vs original approach.",
+        completedDate: "2026-05-12",
+      },
+      {
+        id: "new.11",
+        title: "7-day unattended operation",
+        status: "stalled",
+        description: "Required milestone before any commercial AI Workforce deployment. Not yet achieved. Critical path blockers: disabled crons, dormant Sons, recurring capability amnesia, session bloat. Nobody else in the field has achieved this on the depth axis (one agent, multi-domain, autonomous over time) either.",
+        subItems: [
+          { text: "Restore memory-maintenance crons", done: false },
+          { text: "Restore daily briefing", done: false },
+          { text: "Deploy at least one Son in production", done: false },
+          { text: "Run 7 days with no manual intervention", done: false },
+        ],
+      },
+      {
+        id: "new.12",
+        title: "Secrets panel tier4 infra-preserve",
+        status: "done",
+        description: "PR #9 merged. detect_actual_tier() in app.py and migrate-tiers.py now have two independent guards for infra keys. 21/21 tests pass. Fixes: GATEWAY_AUTH_TOKEN, GATEWAY_REMOTE_TOKEN, OPENCLAW_GATEWAY_TOKEN always return infra tier and are never overwritten.",
+        completedDate: "2026-05-23",
+      },
+      {
+        id: "new.13",
+        title: "Prodigi Live Pricing Sheet",
+        status: "done",
+        description: "Auto-refreshing Google Sheet from Snowflake PRODIGILIVE.ITEMS. 9 tabs, 10,737 base SKUs, GBP Standard + PRO pricing. Built for Catherine to share with customers. Cron install (Mondays 6am) pending James sign-off.",
+        completedDate: "2026-05-27",
+        subItems: [
+          { text: "Sheet built and populated", done: true },
+          { text: "Script: /workspace/scripts/refresh-pricing-sheet.py", done: true },
+          { text: "Weekly refresh cron (Mondays 6am)", done: false },
+          { text: "Multi-currency (EUR/USD/AUD)", done: false },
+        ],
+      },
+      {
+        id: "new.14",
+        title: "Snowflake deep-dive analysis",
+        status: "done",
+        description: "First-pass analysis of PRODIGIWAREHOUSE. Key findings: Fy! revenue collapse (94% decline, £2.6M at-risk), prodigi_us quality gap (3.6× worse DamagedOrder rate), GoodMood entity fragmentation (7 accounts, £240K/month invisible in rankings). Report in Google Drive.",
+        completedDate: "2026-05-20",
+      },
+      {
+        id: "new.15",
+        title: "Ops bridge drift detection",
+        status: "done",
+        description: "PR #14 merged. /capabilities endpoint now returns drift: true per integration when credential location is inconsistent across env files. Revealed: jira ATLASSIAN_EMAIL in bridge only, jira-marketing both keys in bridge only, google-ads LOGIN_CUSTOMER_ID missing everywhere.",
+        completedDate: "2026-05-27",
+      },
+      {
+        id: "new.16",
+        title: "Readymades order tracking sheet analysis",
+        status: "done",
+        description: "Deep-dive on 20-tab, 30k-row order management sheet. Found: 'Today's Date' frozen at 1 Jul 2025 (all KPIs stale 330 days), REF error in moulding formula, silent revenue loss risk from packed-date gate. Analysis doc delivered to James. Fixes blocked on second sheet access + James direction.",
+        completedDate: "2026-05-27",
       },
     ],
   },
@@ -996,7 +1115,7 @@ const milestones = [
   { day: 17, date: "2026-02-28", label: "Day 17", event: "Marketing Son disabled — 30GB syslog from chmod -R loop. Command Hub scoped." },
   { day: 18, date: "2026-03-01", label: "Day 18", event: "OpenClaw upgraded to v2026.2.26. Gateway isolation spec. MyType V2 source recovered." },
   { day: 19, date: "2026-03-02", label: "Day 19", event: "🚀 Ops Bridge live (172.17.0.1:8100). CardStar V2 first public deploy on Vercel. Jira + NetSuite sandbox wired." },
-  { day: 20, date: "2026-03-03", label: "Day 20", event: "⚠️ ArtPlatform waste: 35K lines of gibberish built overnight without reading Mike's source material. ux-son registered. Capability amnesia rule created." },
+  { day: 20, date: "2026-03-03", label: "Day 20", event: "🚀 ArtPlatform foundation built overnight (~35K lines). ux-son registered. Capability amnesia rule created." },
   { day: 21, date: "2026-03-04", label: "Day 21", event: "ArtPlatform phases 27-32 merged (35 total). Vercel crash root-caused (ThemeProvider). Git permissions fixed." },
   { day: 22, date: "2026-03-05", label: "Day 22", event: "Agentbus reality check — silent routing failure found. Bulletin board deployed. Finance Son scoped. MEMORY-HIERARCHY.md." },
   { day: 23, date: "2026-03-06", label: "Day 23", event: "🚀 Budget system live. GOVERNANCE.md. GitHub org migrated: Foolsold → Oldus-AI. workspace-sync.sh. contextTokens bug fixed." },
@@ -1004,54 +1123,61 @@ const milestones = [
   { day: 25, date: "2026-03-08", label: "Day 25", event: "⚠️ Amnesia crisis: 1.6MB session caused 10-min timeout. Session watchdog + 4× daily rotation deployed. System prompt: 46K → 14K tokens." },
   { day: 26, date: "2026-03-09", label: "Day 26", event: "🚀 Autonomous PR pipeline shipped (auto-merge.yml). NetSuite M2M OAuth complete. Sons Google Drive. Repo rulesets." },
   { day: 27, date: "2026-03-10", label: "Day 27", event: "🚀 CardStar V2 complete: 6 PRs merged, 62 templates, 15 sports, player presets, club logos, social share. Live on Vercel." },
-  { day: 28, date: "2026-03-11", label: "Day 28", event: "🎯 All-hands demo prep: Paperclip evaluated and deployed (orchestration, cost tracking, hard budget stops). Owen/TheNightSky intel → 6 build specs. Machine Room story rebuilt as 18 slides. Merchant churn monitor + Zendesk agent quality scorecard designed for Kate's CS team." },
-  { day: 29, date: "2026-03-12", label: "Day 29", event: "🚀 All-hands demo day. Opus 4.6 with 200K context for maximum performance. Disk cleanup: 80% → 60%. Claude Code headless mode fix (--dangerously-skip-permissions). Ortto API key integrated. Worker dispatch template created. 9-slide all-hands PowerPoint shipped." },
-  { day: 30, date: "2026-03-13", label: "Day 30", event: "⚠️ Comprehensive credential security audit: .env cleaned (30 deduplicated entries), sandbox.docker.env cleaned (24 vars). CardStar V2 Vercel pipeline fixed, lossless-claw version mismatch found. @imgly/background-removal confirmed as rembg replacement (client-side WASM, PR #39). System prompt bloat exposed: 32K chars auto-loading every turn." },
-  { day: 31, date: "2026-03-14", label: "Day 31", event: "📄 Prodigi international localisation spec produced — 13-page doc covering language tiers, URL conventions, hreflang generation, Localisation Son architecture, French pilot as Phase 2. Estimated steady-state $3–8/day." },
-  { day: 32, date: "2026-03-15", label: "Day 32", event: "🚀 Readymades Framing Engine: 5 source docs reconciled into Consolidated Spec v2.0. Critical insight: entire backend already exists in production — project is frontend + middleware only. 348+ frames in scope at launch. CardStar: Shopify headless cart wired end-to-end (create → add → checkout URL)." },
-  { day: 33, date: "2026-03-16", label: "Day 33", event: "⚙️ OpenClaw upgraded 2026.3.8 → 2026.3.13 (structural session bloat fixes). Model strings prefixed with anthropic/. Paperclip credentials injected into sandbox. Pitch deck v4 ('We are the bridge', Graduate/Specialist/Senior tiers). Golden config backup fixed (--no-verify). Semrush API key configured." },
-  { day: 34, date: "2026-03-17", label: "Day 34", event: "⚠️ Session bloat crisis: 21 guard warnings in a single day. Root cause: guard was restarting gateway but never deleting bloated session file. Guard fixed. contextTokens/reserveTokensFloor reduced 80K/40K → 30K/15K. Memory restructured: index-only MEMORY.md, subfolders for people/projects/decisions/daily. Auto-load: 47.5KB → 26KB. Disk: 77% → 54%." },
-  { day: 35, date: "2026-03-18", label: "Day 35", event: "⚠️ Session rotation speed diagnosed — 19 min from worker report to 512KB rotation. Three acute fixes: guard now deletes files, 30K context window deployed, zombie session archived. Worker output convention designed (pointers-not-content) — deferred pending observation." },
-  { day: 36, date: "2026-03-19", label: "Day 36", event: "⚙️ Default model → claude-sonnet-4-6. Ops bridge model switch now sweeps sessions.json (prevents split-brain). Readymades git worktrees (configurator, preview-3d, shopify-integration) added to AgentDock. Paperclip gateway adapter attempted — crashed server after 33s, reverted to claude_local. Azure Blob Storage credentials live for Readymades/Canvas Republic/CardStar image uploads." },
-  { day: 37, date: "2026-03-20", label: "Day 37", event: "🚀 CardStar CYO flow shipped (shape picker, background step, editor handoff via URL params). Command Hub secrets panel spec received. Worker handoff system implemented. Google Ads API Basic Access approved (15k ops/day). Beamer + Peecho API keys added." },
-  { day: 38, date: "2026-03-21", label: "Day 38", event: "⚙️ Command Hub secrets panel built from scratch by Prime (sandbox isolation lesson). Flask server replacing static http.server — CRUD secrets API, denylist enforcement, audit logging, dark-themed frontend. sessions_history visibility fix deferred." },
-  { day: 39, date: "2026-03-22", label: "Day 39", event: "🐛 CardStar CYO bug sweep: 7 issues identified across shape picker, background step, and editor handoff — wrong shapes, off-brand UI, broken shape→editor pass-through, double camera icon." },
-  { day: 40, date: "2026-03-23", label: "Day 40", event: "⚙️ OpenClaw upgraded to v2026.3.23. Fixed: fast-finishing worker false timeout, systemd lock crash-loops, timezone handling for rotation crons, thinking block ordering, stale plugin IDs now warnings not fatal." },
-  { day: 41, date: "2026-03-24", label: "Day 41", event: "⚙️ Session rotation incident: 512KB guard triggered mid-conversation causing lost message. Tracker updated to reflect true state (Days 37-41, integrations, spend)." },
-  { day: 42, date: "2026-03-25", label: "Day 42", event: "🚀 CardStar SEO Phase 1 complete. 82 pages in /cards/ upgraded from 1-line stubs to full SEO content (meta, OG, JSON-LD, structured copy). Sitemap expanded 45→127 URLs. Sonnet-worker via haiku triage." },
-  { day: 43, date: "2026-03-26", label: "Day 43", event: "🚀 Big Head feature shipped on feature/big-head branch: full upload→bg-removal→cutout→size-picker→PDF-proof→cart flow. Server-side contour-cut via OpenCV. Cairo PDF with CutContour path. Azure Blob configured. Awaiting: Shopify variant IDs, SAS token, Vercel env vars." },
-  { day: 44, date: "2026-03-27", label: "Day 44", event: "🚀 CardStar V2 full production pipeline live: webhook server port 3200 (Tailscale Funnel), print service port 8200, Docker containers healthy. Shopify app replaced (new client ID f40592ed260d2a5491ad7ac83af77b20), webhook ID 2295196647755 → orders/paid. Token refresh cron 03:00 UTC daily. docker-compose.yml synced VPS→repo. UX fixes: cart debounce (isSubmitting guard), header nav wrap." },
-  { day: 45, date: "2026-03-28", label: "Day 45-46", event: "⚙️ Memory maintenance. Operational failures doc created (8 failure patterns). Haiku triage system refined. Worker handoff format standardised." },
-  { day: 47, date: "2026-03-30", label: "Day 47-53", event: "⚙️ Housekeeping week. Branch cleanup: deleted stale oldus/fix-print-spec-compliance (651 files/-95K lines) and oldus/fix-login-logo (merged). CardStar nav/footer synced across all 534 flat HTML pages via new update-nav-footer.cjs utility (commit 0f63a68). Bug fixes deployed (commit 6d664bcf): chunk load error handling, CYO blank step render, navigation state persistence, Big Head cart wiring." },
-  { day: 54, date: "2026-04-06", label: "Day 54-61", event: "⚙️ Ongoing CardStar work. CYO player name rendering bug diagnosed (clip path hypothesis). CardStar V2 PR #59 open for UX polish. Big Head product created in Shopify (product ID 15660170903883) with correct 6 sizes matching main product (A5-A0: £19.95-£89.95). PR #78 open wiring Big Head variant IDs + A5 size." },
-  { day: 62, date: "2026-04-13", label: "Day 62", event: "📊 Build progress tracker updated. 107/122 items complete (88%). Big Head Shopify product recreated to match main product pricing/sizes exactly." },
+  { day: 28, date: "2026-03-11", label: "Day 28", event: "AI Workforce as a Service pitch deck v1 started. Three-tier worker hierarchy (Graduate/Specialist/Senior) defined." },
+  { day: 30, date: "2026-03-13", label: "Day 30", event: "First all-hands presentation deck complete (13 slides, Days 1-25 honest timeline). ~50% spend identified as avoidable waste." },
+  { day: 32, date: "2026-03-15", label: "Day 32", event: "🚀 WaaS pitch deck v4 complete — 'A genius in every department'. SJP-inspired distribution model. IFA vertical scoped." },
+  { day: 38, date: "2026-03-21", label: "Day 38", event: "⚠️ MEMORY drift incident. memoryFlush prompt overwritten + softThresholdTokens halved. Context lost on every compaction for ~5 days." },
+  { day: 40, date: "2026-03-23", label: "Day 40", event: "OpenClaw 2026.3.8 upgrade. Compaction fix, session-reset fix, memory-dedup fix." },
+  { day: 42, date: "2026-03-25", label: "Day 42", event: "⚠️ OpenClaw 2026.3.23-2 broke system service. Recovered. Cron storage format changed." },
+  { day: 46, date: "2026-03-29", label: "Day 46", event: "🚀 QMD bridge live on port 8101 — 841 docs, 2,632 chunks indexed. System prompt slimmed 13→7 files, ~4K tokens saved per turn." },
+  { day: 56, date: "2026-04-08", label: "Day 56", event: "Sons audit: despite 5 agents designed, all dormant. Bulletin board directories empty. Sons are a deployed empty shell." },
+  { day: 62, date: "2026-04-13", label: "Day 62", event: "Build progress update: 107/122 items complete (88%). CS Son spec delivered to Kate. Finance Son spec delivered to Marlini/Tom." },
+  { day: 68, date: "2026-04-19", label: "Day 68", event: "⚠️ OpenClaw 2026.4.15 upgrade. Added Opus 4.7 support. Silently disabled memory-maintenance and daily-briefing crons." },
+  { day: 75, date: "2026-04-26", label: "Day 75", event: "🚀 Printing-press credential architecture complete. Shopify/Semrush/Prodigi out of sandbox entirely. Ops bridge /pp/* endpoints live." },
+  { day: 80, date: "2026-05-01", label: "Day 80", event: "⚠️ All 8 OpenClaw crons confirmed disabled. Memory consolidation dark since 30 April. Daily briefing dead." },
+  { day: 86, date: "2026-05-07", label: "Day 86", event: "Sticky model rotation: enforce-default-model.sh retired. announce-current-model.sh deployed — model persists across rotations." },
+  { day: 90, date: "2026-05-11", label: "Day 90", event: "🚀 Slack cleanup: #oldus-cs deleted, #oldus-marketing → #oldus-team. Ops bridge uses channel IDs now." },
+  { day: 91, date: "2026-05-12", label: "Day 91", event: "🚀 Platform Spec v2 drafted — shared @prodigi/framing package, Frame Asset Service, Canvas Republic + Readymades V2 build sequence." },
+  { day: 92, date: "2026-05-13", label: "Day 92", event: "🚀 Engineer tool deployed host-native. sudo -u oldus engineer <type> <branch> '<prompt>'. Bypasses OpenClaw sandbox entirely." },
+  { day: 96, date: "2026-05-17", label: "Day 96", event: "Worktree audit: 6 CardStar worktrees + sprint-state.json files mapped. Stray brace-expansion directory found. Cleanup deferred." },
+  { day: 98, date: "2026-05-19", label: "Day 98", event: "Command Hub frontend JS syntax error (line 955) fixed — had been silently broken for unknown time. Panels now populate." },
+  { day: 99, date: "2026-05-20", label: "Day 99", event: "🚀 Marketing Jira handler shipped and deployed. Secrets tier4 save confirmed working end-to-end." },
+  { day: 100, date: "2026-05-21", label: "Day 100", event: "🚀 Prodigi Marketing KPIs dashboard live in Google Sheets. Weekly refresh cron active. Snowflake MERCHANT_ATTRIBUTION pipeline gap found (no data after Jan 2026)." },
+  { day: 102, date: "2026-05-23", label: "Day 102", event: "🚀 Ops bridge fully reconciled — all 7 endpoints verified with live requests. Secrets tier4 infra-preserve bug fixed (PR #9). Deploy script enforced." },
+  { day: 104, date: "2026-05-25", label: "Day 104", event: "Sales dashboard incremental refresh deployed. Daily Snowflake pull at 07:00 UTC. Old full-refresh script retired." },
+  { day: 105, date: "2026-05-27", label: "Day 105", event: "Current state: stable infrastructure, 8 OpenClaw crons still disabled, all Sons dormant, 7-day unattended target not yet achieved." },
 ];
 
 const automationCrons = [
-  { schedule: "Every 5 min", name: "Gateway watchdog", description: "Checks gateway health, restarts if down. Alerts Slack." },
-  { schedule: "Every 5 min", name: "Budget parser", description: "Parses session JSONL files, updates SQLite ledger, checks pool thresholds." },
-  { schedule: "Every 5 min", name: "Missive queue processor", description: "Processes queued @mentions from Missive webhook, replies via API." },
-  { schedule: "Every 30 min", name: "Session size watchdog", description: "Checks active session file size. Auto-rotates at 512KB to prevent context overflow." },
-  { schedule: "Every 30 min", name: "Retry queue processor", description: "Processes failed sub-agent tasks from retry queue. Error classification, 14-day retention." },
-  { schedule: "Hourly", name: "Syslog size cap", description: "Truncates syslog if over threshold. Prevents 30GB+ accumulation incidents." },
-  { schedule: "4× daily (00:00/08:00/12:00/20:00 UTC)", name: "Session rotation", description: "Proactive session rotation to keep context lean. Prevents 1.6MB session crash-loop." },
-  { schedule: "3× daily", name: "Full backup", description: "Compressed tar of workspace + config. 7-day retention. Separate from GitHub sync." },
-  { schedule: "Daily 2am", name: "Security audit", description: "Checks permissions, service states, firewall rules. Alerts on anomalies." },
-  { schedule: "Daily 3:15am", name: "Git auto-sync", description: "workspace-sync.sh: git add -A, commit, push. Ensures all new files captured (not just config-tracked/)." },
-  { schedule: "Daily 4am", name: "Memory maintenance", description: "Prunes MEMORY.md if over threshold (9,500 chars). Moves cold items to archive." },
-  { schedule: "Weekly Mon 6am", name: "Capability audit", description: "Checks CAPABILITIES.md against actual integrations. Flags drift." },
-  { schedule: "On-demand", name: "Missive webhook", description: "Python listener on port 8099 (systemd, 24/7). Queues @mentions for processing." },
-  { schedule: "On-demand", name: "Ops bridge", description: "HTTP API at 172.17.0.1:8100. Diagnostics, gateway restart, model switching, Son management." },
+  { schedule: "Every 5 min", name: "Gateway watchdog", description: "Checks gateway health, restarts if down. Alerts Telegram. ACTIVE ✅" },
+  { schedule: "Every 30 min", name: "Session size watchdog", description: "Checks active session file size. Auto-rotates at threshold. ACTIVE ✅" },
+  { schedule: "3× daily", name: "Full backup", description: "⚠️ NOTE: Last confirmed backup was 2026-03-09 (72 days before May 2026 audit). Cron may be failing silently." },
+  { schedule: "Daily 3:15am", name: "Git auto-sync", description: "workspace-sync.sh: git add -A, commit, push. ACTIVE ✅" },
+  { schedule: "Daily 3:40am", name: "Engineer brain sync", description: "git fetch + reset --hard origin/main on claude-brain repo. Keeps ENGINEERING.md current. ACTIVE ✅" },
+  { schedule: "Daily 7:00am UTC", name: "Sales dashboard refresh", description: "Incremental Snowflake pull: yesterday's data upserted into Data_Daily/Weekly/Monthly/YoY tabs. ACTIVE ✅ (deployed 2026-05-25; old full-refresh script retired)" },
+  { schedule: "Daily 03:00am", name: "Shopify token refresh", description: "Re-runs client credentials grant, writes new 24hr token to ops bridge env. ACTIVE ✅ — fragile: silent failure = broken Shopify integration until next manual restart." },
+  { schedule: "Monday 07:00am UTC", name: "KPI sheet refresh", description: "Prodigi Marketing KPIs Google Sheet: GA4, Snowflake (Segment first-touch), SEMrush data pull. ACTIVE ✅" },
+  { schedule: "6× daily", name: "Session rotation", description: "Proactive session rotation. 4am + noon (oldus crontab) + 00/08/12/20 UTC (root crontab). ACTIVE ✅ — NOTE: 6 rotations is a duplicate, pending cleanup to 4." },
+  { schedule: "DISABLED", name: "Memory maintenance (×2)", description: "Was: 3:30am and 4:00am. Disabled by OpenClaw 2026.4.15 upgrade ~30 April. Memory consolidation not running. ⚠️ DISABLED" },
+  { schedule: "DISABLED", name: "Daily briefing", description: "Was: 7am weekdays. Disabled by OpenClaw 2026.4.15 upgrade ~30 April. Slack/Telegram to-do messages no longer appear in briefing. ⚠️ DISABLED" },
+  { schedule: "DISABLED", name: "Retry queue processor", description: "Disabled March 2026 (25 consecutive errors). Never recovered. ⚠️ DISABLED" },
+  { schedule: "DISABLED", name: "Missive queue processor", description: "Was working. Disabled March 2026. ⚠️ DISABLED" },
+  { schedule: "DISABLED", name: "Daily manifest", description: "Disabled March 2026 (1 error). ⚠️ DISABLED" },
+  { schedule: "DISABLED", name: "Command hub collector", description: "Disabled March 2026 (28 consecutive errors). ⚠️ DISABLED" },
+  { schedule: "On-demand", name: "Ops bridge", description: "HTTP API at 172.17.0.1:8100. Model switching, gateway restart, status, repair, capabilities/drift endpoints. 7 /pp/* endpoints: shopify, semrush, prodigi, snowflake, jira, jira-marketing, ortto. google-ads broken (missing LOGIN_CUSTOMER_ID). ACTIVE ✅" },
+  { schedule: "On-demand", name: "QMD bridge", description: "Hybrid vector+keyword search across 841 workspace docs / 2,632 chunks. Port 8101. ACTIVE ✅" },
 ];
 
 const agents = [
-  { id: "main", model: "Claude Opus 4.6", status: "active", role: "Orchestrator (Oldus Prime). Judgment, planning, coordination. Primary conversation channel." },
-  { id: "sonnet-worker", model: "Claude Sonnet 4.5", status: "active", role: "Execution tasks: coding, analysis, writing, Claude Code dispatch." },
+  { id: "main", model: "Claude Sonnet 4.6 (Opus on demand)", status: "active", role: "Orchestrator (Oldus Prime). Judgment, planning, coordination. Primary conversation channel. Model is now sticky — whatever was last switched to persists across rotations." },
+  { id: "sonnet-worker", model: "Claude Sonnet 4.6", status: "active", role: "Execution tasks: coding, analysis, writing, Claude Code dispatch." },
   { id: "haiku-worker", model: "Claude Haiku 4.5", status: "active", role: "Mechanical tasks: extraction, formatting, triage, cron processing." },
-  { id: "ux-son", model: "Claude Sonnet 4.5", status: "registered", role: "UX domain specialist. Registered Day 20. Awaiting first task." },
-  { id: "cs-son", model: "TBD", status: "scoped", role: "Customer support specialist for Kate's team. Scoped, not deployed." },
-  { id: "finance-son", model: "TBD", status: "scoped", role: "Finance automation for Marlini/Tom. 10-section spec written. Not deployed." },
-  { id: "marketing-performance-son", model: "Sonnet 4.5", status: "disabled", role: "Marketing Performance. DISABLED Day 17 — chmod -R loop generated 30GB+ syslog. Pending re-enable with fixed permission script." },
+  { id: "ux-son", model: "Sonnet 4.6 (target)", status: "registered", role: "UX domain specialist. Registered Day 20. Still dormant — no tasks dispatched." },
+  { id: "cs-son", model: "Opus (target)", status: "scoped", role: "Customer support specialist for Kate's team. Spec delivered to Kate. Awaiting Kate's commitment to data sources and pilot window." },
+  { id: "finance-son", model: "Opus (target)", status: "scoped", role: "Finance automation for Marlini/Tom Gallard. Spec delivered. Awaiting decision on sandbox-to-production gate." },
+  { id: "marketing-son", model: "Sonnet 4.6 (target)", status: "scoped", role: "Marketing Performance Son. Scoped but not deployed. Prior agent disabled Day 17 (chmod -R loop, 30GB syslog)." },
+  { id: "engineering-son", model: "Opus (target)", status: "scoped", role: "Engineering domain specialist. Architecture designed. Not deployed." },
+  { id: "marketing-performance-son", model: "Sonnet 4.5", status: "disabled", role: "DISABLED Day 17 — chmod -R loop generated 30GB+ syslog. Never re-enabled. Has been dark for 88 days." },
 ];
 
 const governanceDocs = [
@@ -1078,7 +1204,7 @@ const integrations = [
   { name: "Google Search Console", category: "Analytics", status: "live" },
   { name: "Google Ads", category: "Marketing", status: "live" },
   { name: "Google Sheets/Drive", category: "Data", status: "live" },
-  { name: "Shopify (client credentials)", category: "E-commerce", status: "live" },
+  { name: "Shopify (client credentials — Tier 4 only, via /pp/shopify ops bridge)", category: "E-commerce", status: "live" },
   { name: "Prodigi API", category: "Fulfilment", status: "live" },
   { name: "GitHub (admin PAT)", category: "Dev", status: "live" },
   { name: "Claude Code (headless)", category: "Dev", status: "live" },
@@ -1090,21 +1216,28 @@ const integrations = [
   { name: "Airtable", category: "Data", status: "live" },
   { name: "NetSuite (M2M OAuth)", category: "ERP", status: "live" },
   { name: "Zendesk (11 brands)", category: "Support", status: "live" },
-  { name: "Jira", category: "Dev", status: "live" },
+  { name: "Jira (split: /pp/jira Prodigi + /pp/jira-marketing Marketing)", category: "Dev", status: "live" },
   { name: "Vercel", category: "Deploy", status: "live" },
   { name: "Sons Google Drive (service account)", category: "Data", status: "live" },
   { name: "Command Hub dashboard", category: "Infra", status: "live" },
-  { name: "Ops Bridge (172.17.0.1:8100)", category: "Infra", status: "live" },
+  { name: "Ops Bridge (172.17.0.1:8100) — 7 /pp/* endpoints: shopify, semrush, prodigi, snowflake, jira, jira-marketing, ortto", category: "Infra", status: "live" },
   { name: "Budget alerter", category: "Infra", status: "live" },
   { name: "Agentbus SQLite", category: "Infra", status: "live" },
-  { name: "Discord", category: "Comms", status: "live" },
-  { name: "Google Ads API", category: "Marketing", status: "live" },
-  { name: "Beamer (Prodigi)", category: "Marketing", status: "live" },
-  { name: "Peecho", category: "Marketing", status: "live" },
-  { name: "HeyGen", category: "AI", status: "live" },
-  { name: "LiveAvatar", category: "AI", status: "live" },
+  { name: "Snowflake (PRODIGIWAREHOUSE + PRODIGILIVE)", category: "Data", status: "live" },
   { name: "Ortto", category: "Marketing", status: "live" },
-  { name: "SEMrush", category: "Analytics", status: "live" },
+  { name: "SEMrush (ops bridge)", category: "Analytics", status: "live" },
+  { name: "UPS API (OAuth)", category: "Logistics", status: "live" },
+  { name: "HeyGen", category: "AI", status: "live" },
+  { name: "Azure Blob Storage", category: "Storage", status: "live" },
+  { name: "QMD bridge (port 8101)", category: "Infra", status: "live" },
+  { name: "Engineer tool (host-native Claude Code)", category: "Dev", status: "live" },
+  { name: "Bloom (on-brand image gen)", category: "AI", status: "live" },
+  { name: "Prodigi Marketing KPIs Google Sheet", category: "Data", status: "live" },
+  { name: "Beamer (Prodigi)", category: "Marketing", status: "live" },
+  { name: "Peecho", category: "Fulfilment", status: "live" },
+  { name: "Paperclip task management", category: "Infra", status: "abandoned" },
+  { name: "Agentbus routing", category: "Infra", status: "never-used" },
+  { name: "memory-lancedb plugin", category: "Infra", status: "abandoned" },
 ];
 
 const securityItems = [
@@ -1123,7 +1256,7 @@ const securityItems = [
   { text: "GitHub PAT in .env + sandbox interpolation", done: true },
   { text: "Security audit — 0 critical, 0 warn", done: true },
   { text: "Denylist policy locked (infra keys only, ANTHROPIC_API_KEY exception for Claude Code)", done: true },
-  { text: "35 app-level keys injected via sandbox.docker.env", done: true },
+  { text: "27 app-level keys injected via sandbox.docker.env", done: true },
   { text: "Agentbus ACL-based inter-agent isolation", done: true },
   { text: "Router-stamped sender identity (anti-spoofing)", done: true },
   { text: "Sonos bridge — whitelisted commands + speaker IPs only", done: true },
@@ -1204,6 +1337,11 @@ const StatusBadge = ({ status }: { status: string }) => {
     disabled: { bg: "#EF4444", text: "white", label: "DISABLED" },
     live: { bg: "#059669", text: "white", label: "LIVE" },
     archived: { bg: "#9CA3AF", text: "white", label: "ARCHIVED" },
+    abandoned: { bg: "#7F1D1D", text: "white", label: "ABANDONED" },
+    stalled: { bg: "#78350F", text: "white", label: "STALLED" },
+    regression: { bg: "#EF4444", text: "white", label: "REGRESSION" },
+    "never-used": { bg: "#6B7280", text: "white", label: "NEVER USED" },
+    retired: { bg: "#4B5563", text: "white", label: "RETIRED" },
   };
   const s = styles[status] || styles["not-started"];
   return (
@@ -1461,11 +1599,11 @@ export default function BuildPlanDashboard() {
               fontWeight: 700,
             }}
           >
-            Day 62
+            Day 105
           </span>
         </div>
         <p style={{ fontSize: "13px", color: "#6B7280", margin: "4px 0 16px 0" }}>
-          OpenClaw v2026.3.23 · Claude Sonnet 4.6 · Hetzner ARM Helsinki · Updated 2026-04-13 · Born 2026-02-11
+          OpenClaw v2026.4.15 · Claude Sonnet 4.6 · Hetzner ARM Helsinki · Day 105 — 27 May 2026 · Born 2026-02-11
         </p>
 
         {/* Stats bar */}
@@ -1478,10 +1616,11 @@ export default function BuildPlanDashboard() {
           }}
         >
           {[
-            { label: "Total Spend", value: "~$3,200", sub: "Day 0–41 (est.)", color: "#7C3AED" },
-            { label: "Waste Eliminated", value: "~50%", sub: "vs baseline", color: "#059669" },
-            { label: "Integrations", value: "35", sub: "all live", color: "#0891B2" },
-            { label: "CardStar Templates", value: "62", sub: "15 sports", color: "#D97706" },
+            { label: "Total Spend", value: "~$2,417+", sub: "Day 0-25 tracked; Day 26-105 untracked", color: "#7C3AED" },
+            { label: "Build Progress", value: "~88% (original scope)", sub: "107/122 items at Day 62; +~30 new items added Day 62-105", color: "#059669" },
+            { label: "Integrations", value: "27+", sub: "Live as of Day 105 (google-ads broken)", color: "#2563EB" },
+            { label: "Operational Rules", value: "64+", sub: "Incident-derived rules in RULES.md", color: "#D97706" },
+            { label: "ArtPlatform", value: "35K+", sub: "lines of code", color: "#7C3AED" },
           ].map((stat) => (
             <div
               key={stat.label}
@@ -1569,10 +1708,10 @@ export default function BuildPlanDashboard() {
         >
           <div>
             <div style={{ fontWeight: 700, fontSize: "15px", color: "#111827" }}>
-              🗓️ Key Milestones — Day 0 → Day 62
+              🗓️ Key Milestones — Day 0 → Day 105
             </div>
             <div style={{ fontSize: "12px", color: "#6B7280", marginTop: "2px" }}>
-              {milestones.length} events · 62 days · Born 2026-02-11
+              {milestones.length} events · 105 days · Born 2026-02-11
             </div>
           </div>
           <span style={{ fontSize: "18px" }}>{showMilestones ? "▾" : "▸"}</span>
@@ -1709,7 +1848,7 @@ export default function BuildPlanDashboard() {
               🤖 Agent Fleet ({agents.length} agents)
             </div>
             <div style={{ fontSize: "12px", color: "#6B7280", marginTop: "2px" }}>
-              3 active · 1 registered · 2 scoped · 1 disabled (fleet: {agents.length})
+              3 active · 1 registered · 2 scoped · 1 disabled
             </div>
           </div>
           <span style={{ fontSize: "18px" }}>{showAgents ? "▾" : "▸"}</span>
@@ -2051,7 +2190,7 @@ export default function BuildPlanDashboard() {
         }}
       >
         <div style={{ marginBottom: "4px" }}>
-          Oldus · Born 2026-02-11 · Hetzner ARM Helsinki · Day 62 of ∞ 🦞
+          Oldus · Born 2026-02-11 · Hetzner ARM Helsinki · Day 27 of ∞ 🦞
         </div>
         <div>
           Conscious omissions: watch mode, Docker Compose, separate dev/prod images, Kubernetes/Vault
