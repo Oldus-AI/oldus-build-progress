@@ -348,7 +348,7 @@ const phases = [
         title: "Marketing Performance Son — DISABLED",
         status: "done",
         description:
-          "Disabled Day 17 (chmod -R loop, 30GB syslog). Has been dark for 88 days as of Day 105. No restoration planned. A new marketing-son is scoped from scratch.",
+          "Disabled Day 17 (chmod -R loop, 30GB syslog). Has been dark for 89 days as of Day 106. No restoration planned. A new marketing-son is scoped from scratch.",
         completedDate: "2026-02-28",
       },
       {
@@ -356,7 +356,7 @@ const phases = [
         title: "UX Son (ux-son) — registered",
         status: "done",
         description:
-          "Registered Day 20. Still dormant as of Day 105 — no tasks dispatched in 85 days.",
+          "Registered Day 20. Still dormant as of Day 106 — no tasks dispatched in 86 days.",
         completedDate: "2026-03-03",
       },
       {
@@ -938,7 +938,7 @@ const phases = [
     id: "new-days26-105",
     title: "New — Days 26-105 Additions",
     status: "in-progress",
-    goldenSnapshot: "Day 105 — 27 May 2026",
+    goldenSnapshot: "Day 106 — 28 May 2026",
     items: [
       {
         id: "new.0",
@@ -1145,7 +1145,8 @@ const milestones = [
   { day: 100, date: "2026-05-21", label: "Day 100", event: "🚀 Prodigi Marketing KPIs dashboard live in Google Sheets. Weekly refresh cron active. Snowflake MERCHANT_ATTRIBUTION pipeline gap found (no data after Jan 2026)." },
   { day: 102, date: "2026-05-23", label: "Day 102", event: "🚀 Ops bridge fully reconciled — all 7 endpoints verified with live requests. Secrets tier4 infra-preserve bug fixed (PR #9). Deploy script enforced." },
   { day: 104, date: "2026-05-25", label: "Day 104", event: "Sales dashboard incremental refresh deployed. Daily Snowflake pull at 07:00 UTC. Old full-refresh script retired." },
-  { day: 105, date: "2026-05-27", label: "Day 105", event: "Current state: stable infrastructure, 8 OpenClaw crons still disabled, all Sons dormant, 7-day unattended target not yet achieved." },
+  { day: 105, date: "2026-05-27", label: "Day 105", event: "Dashboard maintenance — integration list cleanup, status refresh." },
+  { day: 106, date: "2026-05-28", label: "Day 106", event: "Current state: 38 integrations live (1 broken: google-ads), Opus 4.5 + Sonnet 4.6 model stack." },
 ];
 
 const automationCrons = [
@@ -1196,45 +1197,55 @@ const governanceDocs = [
 ];
 
 const integrations = [
+  // Comms (4)
   { name: "Telegram", category: "Comms", status: "live" },
   { name: "Slack", category: "Comms", status: "live" },
-  { name: "Missive (webhook)", category: "Comms", status: "live" },
-  { name: "Gmail (read/send)", category: "Comms", status: "live" },
+  { name: "Discord", category: "Comms", status: "live" },
+  { name: "Gmail (read/send/modify)", category: "Comms", status: "live" },
+  // Analytics (3)
   { name: "Google Analytics (13 properties)", category: "Analytics", status: "live" },
   { name: "Google Search Console", category: "Analytics", status: "live" },
-  { name: "Google Ads", category: "Marketing", status: "live" },
-  { name: "Google Sheets/Drive", category: "Data", status: "live" },
-  { name: "Shopify (client credentials — Tier 4 only, via /pp/shopify ops bridge)", category: "E-commerce", status: "live" },
-  { name: "Prodigi API", category: "Fulfilment", status: "live" },
-  { name: "GitHub (admin PAT)", category: "Dev", status: "live" },
-  { name: "Claude Code (headless)", category: "Dev", status: "live" },
-  { name: "OpenAI API", category: "AI", status: "live" },
+  { name: "SEMrush (ops bridge)", category: "Analytics", status: "live" },
+  // Marketing (3)
+  { name: "Google Ads API", category: "Marketing", status: "broken" },
+  { name: "Ortto (ops bridge)", category: "Marketing", status: "live" },
+  { name: "Beamer (Prodigi)", category: "Marketing", status: "live" },
+  // Data (7)
+  { name: "Google Sheets/Drive (2 OAuth accounts)", category: "Data", status: "live" },
+  { name: "Snowflake (PRODIGIWAREHOUSE + PRODIGILIVE)", category: "Data", status: "live" },
+  { name: "Airtable (17+ bases)", category: "Data", status: "live" },
+  { name: "Prodigi Marketing KPIs Google Sheet", category: "Data", status: "live" },
+  { name: "QMD workspace search (port 8101)", category: "Data", status: "live" },
+  { name: "Azure Blob Storage", category: "Storage", status: "live" },
+  { name: "Sons Google Drive (service account)", category: "Data", status: "live" },
+  // Dev (5)
+  { name: "GitHub (Oldus-AI, Prodigi-Group, ArtPlatform orgs)", category: "Dev", status: "live" },
+  { name: "Engineer tool (host-native Claude Code)", category: "Dev", status: "live" },
+  { name: "Jira (split: /pp/jira Prodigi + /pp/jira-marketing Marketing)", category: "Dev", status: "live" },
+  { name: "Vercel (webhook deploy)", category: "Deploy", status: "live" },
+  { name: "Claude Code (headless, sandbox)", category: "Dev", status: "live" },
+  // E-commerce & Fulfilment (4)
+  { name: "Shopify (client credentials — Tier 4, via /pp/shopify)", category: "E-commerce", status: "live" },
+  { name: "Prodigi API (sandbox)", category: "Fulfilment", status: "live" },
+  { name: "Peecho", category: "Fulfilment", status: "live" },
+  { name: "UPS API (OAuth)", category: "Logistics", status: "live" },
+  // Support & ERP (2)
+  { name: "Zendesk (11 brands)", category: "Support", status: "live" },
+  { name: "NetSuite (M2M OAuth)", category: "ERP", status: "live" },
+  // AI (5)
+  { name: "OpenAI API (GPT-5.5)", category: "AI", status: "live" },
   { name: "ElevenLabs", category: "AI", status: "live" },
   { name: "Gemini / Google AI", category: "AI", status: "live" },
-  { name: "Tailscale (Funnel)", category: "Infra", status: "live" },
-  { name: "Sonos (HTTP bridge)", category: "IoT", status: "live" },
-  { name: "Airtable", category: "Data", status: "live" },
-  { name: "NetSuite (M2M OAuth)", category: "ERP", status: "live" },
-  { name: "Zendesk (11 brands)", category: "Support", status: "live" },
-  { name: "Jira (split: /pp/jira Prodigi + /pp/jira-marketing Marketing)", category: "Dev", status: "live" },
-  { name: "Vercel", category: "Deploy", status: "live" },
-  { name: "Sons Google Drive (service account)", category: "Data", status: "live" },
-  { name: "Command Hub dashboard", category: "Infra", status: "live" },
-  { name: "Ops Bridge (172.17.0.1:8100) — 7 /pp/* endpoints: shopify, semrush, prodigi, snowflake, jira, jira-marketing, ortto", category: "Infra", status: "live" },
-  { name: "Budget alerter", category: "Infra", status: "live" },
-  { name: "Agentbus SQLite", category: "Infra", status: "live" },
-  { name: "Snowflake (PRODIGIWAREHOUSE + PRODIGILIVE)", category: "Data", status: "live" },
-  { name: "Ortto", category: "Marketing", status: "live" },
-  { name: "SEMrush (ops bridge)", category: "Analytics", status: "live" },
-  { name: "UPS API (OAuth)", category: "Logistics", status: "live" },
-  { name: "HeyGen", category: "AI", status: "live" },
-  { name: "Azure Blob Storage", category: "Storage", status: "live" },
-  { name: "QMD bridge (port 8101)", category: "Infra", status: "live" },
-  { name: "Engineer tool (host-native Claude Code)", category: "Dev", status: "live" },
+  { name: "HeyGen / LiveAvatar", category: "AI", status: "live" },
   { name: "Bloom (on-brand image gen)", category: "AI", status: "live" },
-  { name: "Prodigi Marketing KPIs Google Sheet", category: "Data", status: "live" },
-  { name: "Beamer (Prodigi)", category: "Marketing", status: "live" },
-  { name: "Peecho", category: "Fulfilment", status: "live" },
+  // Infra (5)
+  { name: "Tailscale Funnel (HTTPS ingress)", category: "Infra", status: "live" },
+  { name: "Command Hub dashboard", category: "Infra", status: "live" },
+  { name: "Ops Bridge (8 endpoints: shopify, semrush, prodigi, snowflake, jira, jira-marketing, ortto, google-ads)", category: "Infra", status: "live" },
+  { name: "Sonos (HTTP bridge)", category: "IoT", status: "live" },
+  { name: "Budget alerter", category: "Infra", status: "live" },
+  // Retired/Abandoned
+  { name: "Missive (webhook)", category: "Comms", status: "abandoned" },
   { name: "Paperclip task management", category: "Infra", status: "abandoned" },
   { name: "Agentbus routing", category: "Infra", status: "never-used" },
   { name: "memory-lancedb plugin", category: "Infra", status: "abandoned" },
@@ -1336,6 +1347,7 @@ const StatusBadge = ({ status }: { status: string }) => {
     scoped: { bg: "#D97706", text: "white", label: "SCOPED" },
     disabled: { bg: "#EF4444", text: "white", label: "DISABLED" },
     live: { bg: "#059669", text: "white", label: "LIVE" },
+    broken: { bg: "#EF4444", text: "white", label: "BROKEN" },
     archived: { bg: "#9CA3AF", text: "white", label: "ARCHIVED" },
     abandoned: { bg: "#7F1D1D", text: "white", label: "ABANDONED" },
     stalled: { bg: "#78350F", text: "white", label: "STALLED" },
@@ -1599,11 +1611,11 @@ export default function BuildPlanDashboard() {
               fontWeight: 700,
             }}
           >
-            Day 105
+            Day 106
           </span>
         </div>
         <p style={{ fontSize: "13px", color: "#6B7280", margin: "4px 0 16px 0" }}>
-          OpenClaw v2026.4.15 · Claude Sonnet 4.6 · Hetzner ARM Helsinki · Day 105 — 27 May 2026 · Born 2026-02-11
+          OpenClaw v2026.4.15 · Claude Opus 4.5 / Sonnet 4.6 · Hetzner ARM Helsinki · Day 106 — 28 May 2026 · Born 2026-02-11
         </p>
 
         {/* Stats bar */}
@@ -1616,11 +1628,11 @@ export default function BuildPlanDashboard() {
           }}
         >
           {[
-            { label: "Total Spend", value: "~$2,417+", sub: "Day 0-25 tracked; Day 26-105 untracked", color: "#7C3AED" },
-            { label: "Build Progress", value: "~88% (original scope)", sub: "107/122 items at Day 62; +~30 new items added Day 62-105", color: "#059669" },
-            { label: "Integrations", value: "27+", sub: "Live as of Day 105 (google-ads broken)", color: "#2563EB" },
-            { label: "Operational Rules", value: "64+", sub: "Incident-derived rules in RULES.md", color: "#D97706" },
-            { label: "ArtPlatform", value: "35K+", sub: "lines of code", color: "#7C3AED" },
+            { label: "Uptime", value: "106 days", sub: "Born 2026-02-11 · Hetzner ARM Helsinki", color: "#7C3AED" },
+            { label: "Build Progress", value: "~90%", sub: "Original scope complete; maintenance mode", color: "#059669" },
+            { label: "Integrations", value: "38", sub: "Live (1 broken: google-ads)", color: "#2563EB" },
+            { label: "Operational Rules", value: "64+", sub: "Incident-derived in RULES.md", color: "#D97706" },
+            { label: "Repos", value: "10+", sub: "Oldus-AI, Prodigi-Group, ArtPlatform", color: "#0891B2" },
           ].map((stat) => (
             <div
               key={stat.label}
@@ -1708,7 +1720,7 @@ export default function BuildPlanDashboard() {
         >
           <div>
             <div style={{ fontWeight: 700, fontSize: "15px", color: "#111827" }}>
-              🗓️ Key Milestones — Day 0 → Day 105
+              🗓️ Key Milestones — Day 0 → Day 106
             </div>
             <div style={{ fontSize: "12px", color: "#6B7280", marginTop: "2px" }}>
               {milestones.length} events · 105 days · Born 2026-02-11
